@@ -21,7 +21,7 @@ jobs:
           git config --local user.email "6gqrbj@posteo.org"
           git config --local user.name "GitHub Action"
           git add ./data.csv
-          git commit -m "Add changes"
+          git commit -m "Add temperature for ${{ steps.scraper.outputs.dateString }}"
       - name: Push the new data # push the output folder to your repo
         uses: ad-m/github-push-action@master # https://github.com/ad-m/github-push-action
         with:

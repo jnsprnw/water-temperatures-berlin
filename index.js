@@ -7,6 +7,7 @@ const deLocale = require('date-fns/locale/de');
 const LINES = ['Wannsee', 'Müggelsee', 'Havel/Spandau', 'Scharfe Lanke / Pichelsdorf'];
 const TEMPERATURES = [];
 const DELIMITER = ',';
+let dateString;
 
 async function loadContent () {
 	const decoder = new TextDecoder("UTF-16LE");
@@ -16,7 +17,7 @@ async function loadContent () {
 	const content = body.replace(new RegExp('<!--[\\s\\S]*?-->', 'mg'), '');
 	const $ = cheerio.load(content);
 	let rows = '';
-	const dateString = $($('h1')[1]).text().replace('Uhr', '').trim()
+	dateString = $($('h1')[1]).text().replace('Uhr', '').trim()
 	const date = parse(`${dateString} +01`, 'EEEE, d. LLLL yyyy, H:m x', new Date(), { locale: deLocale });
 	$('.p4').each((_, e) => {
 		const el = $(e)
@@ -31,6 +32,7 @@ async function loadContent () {
 	});
 	// console.log(rows)
 	core.setOutput('newData', rows);
+	core.setOutput('dateString', dateString);
 }
 
 loadContent();
