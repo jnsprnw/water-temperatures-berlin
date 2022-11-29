@@ -1,0 +1,17 @@
+{
+  "name": "europe-gas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.9.1",
+    "cheerio": "^1.0.0-rc.12",
+    "date-fns": "^2.29.3",
+    "node-fetch": "^2.6.7"
+  }
+}

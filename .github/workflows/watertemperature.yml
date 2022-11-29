@@ -1,0 +1,29 @@
+name: Wassertemperatur Scraper
+on: 
+  push:
+  schedule:
+    - cron: '0 6,13,19 * * *' # https://crontab.guru/#0_6,13,19_*_*_*
+jobs:
+  WassertemperaturScraper:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2 # Get the content of the repo
+      - name: Run the scraper to check for new data
+        uses: ./actions/scrape # Uses an action in the root directory
+        id: scraper
+      - name: Add new data to csv file
+        # https://github.community/t/possible-to-commit-files-after-workflow-runs/17824
+        run: |
+          echo "${{ steps.scraper.outputs.newData }}" >> data.csv
+      - name: Commit the new log # commit the output folder
+        run: |
+          git config --local user.email "6gqrbj@posteo.org"
+          git config --local user.name "GitHub Action"
+          git add ./data.csv
+          git commit -m "Add changes"
+      - name: Push the new data # push the output folder to your repo
+        uses: ad-m/github-push-action@master # https://github.com/ad-m/github-push-action
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true

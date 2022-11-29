@@ -1,0 +1,8 @@
+name: Scrape the website to get new data
+description: This script requests the website and parses the new data
+outputs:
+  newData:
+    description: 'New data that is to be added to the file'
+runs:
+  using: 'node16'
+  main: '../../scrape/index.js'
