@@ -2,7 +2,7 @@
 
 This Github action scrapes the water temperatures from this website: https://wind.met.fu-berlin.de/mvdtext/mvd_text.htm
 
-You can find the list of historic temperatures in the file data.csv.
+**You can find the list of historic temperatures in the file [data.csv](data.csv).**
 
 Run the script with this command
 ```bash
