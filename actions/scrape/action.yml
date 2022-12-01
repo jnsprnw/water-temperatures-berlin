@@ -4,5 +4,5 @@ outputs:
   newData:
     description: 'New data that is to be added to the file'
 runs:
-  using: 'node16'
-  main: '../../scrape/index.js'
+  using: 'node17'
+  main: '../../bin/index.js'
