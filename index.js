@@ -66,7 +66,7 @@ async function loadContent () {
     }
 	});
 	core.setOutput('newData', rows);
-	core.setOutput('dateString', format(dateRaw, 'dd.MM.yyyy HH:mm'));
+	core.setOutput('dateString', format(dateRaw, 'dd.MM.yyyy HH:mm X'));
 }
 
 loadContent();
